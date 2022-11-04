@@ -1,3 +1,4 @@
+const { User, Symptom, Disease } = require('../models/index');
 class Controller {
     static home(req, res) {
         res.render("index")
