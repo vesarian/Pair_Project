@@ -45,9 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         msg: `Address must not be empty`
       }
     }},
-    imgUrl: {
-      type: DataTypes.STRING
-    }
+    
   }, {
     sequelize,
     modelName: 'Profile',
