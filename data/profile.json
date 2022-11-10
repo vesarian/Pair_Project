@@ -1,0 +1,15 @@
+[
+    {
+        "name": "Mathias Brait", 
+        "age": 25 , 
+        "address": "Jalan kesehatan 7, Bekasi" , 
+        "UserId" : 1 
+    } ,  
+    {
+        "name": "Vesa", 
+        "age": 25 , 
+        "address": "Pamulang, Tangerang Selatan" , 
+        "UserId" : 2 
+    }  
+
+]

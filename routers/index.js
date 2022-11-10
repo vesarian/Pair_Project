@@ -1,15 +1,15 @@
 const router = require('express').Router();
 const user = require('./user');
 const profile = require('./profile');
-const credit = require('./credit');
+const item = require('./item');
 
-router.get("/", (req, res) => {
-    res.render('index')
+router.get('/' , (req, res) => {
+    res.redirect('/items')
 })
 
 router.use('/users', user)
 router.use('/profiles', profile)
-router.use('/credits', credit)
+router.use('/items', item)
 
 
 module.exports = router

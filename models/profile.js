@@ -11,12 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Profile.hasMany(models.Credit)
       Profile.belongsTo(models.User)
     }
   }
   Profile.init({
     name: {
       type: DataTypes.STRING,
+      allowNull:false,
     validate: {
       notNull: {
         msg: `Name must be filled`
@@ -27,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     }},
     age: {
       type: DataTypes.INTEGER,
+      allowNull:false,
     validate: {
       notNull: {
         msg: `Age must be filled`
@@ -37,6 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     }},
     address: {
       type: DataTypes.STRING,
+      allowNull:false,
     validate: {
       notNull: {
         msg: `Address must be filled`

@@ -1,0 +1,12 @@
+[
+    {
+        "email" : "mathiasandwiki15@gmail.com" ,
+        "password" : "testing123" , 
+        "role" : "admin" 
+    } , 
+    {
+        "email" : "mathiasandwiki15@gmail.com" ,
+        "password" : "testing123" , 
+        "role" : "user" 
+    }
+]

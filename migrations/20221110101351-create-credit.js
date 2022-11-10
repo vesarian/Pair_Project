@@ -1,31 +1,37 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  up(queryInterface, Sequelize) {
-    return queryInterface.createTable('Credits', {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('Credits', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      item: {
-        type: Sequelize.STRING
-      },
-      itemPrice: {
+      tenor: {
         type: Sequelize.INTEGER
       },
-      duration: {
-        type: Sequelize.INTEGER
-      },
-      UserId: {
+      ProfileId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users',
+          model: 'Profiles',
           key: 'id'
         },
         onUpdate: 'cascade',
         onDelete: 'cascade'
+      },
+      ItemId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Items',
+          key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
+      },
+      amount: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -37,7 +43,7 @@ module.exports = {
       }
     });
   },
-  down(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Credits');
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('Credits');
   }
 };

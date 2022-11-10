@@ -1,0 +1,14 @@
+[
+    {
+        "item" : "Samsung S22 Ulta"  , 
+        "itemPrice" : 20000000 ,
+        "stock" : 10,
+        "imgUrl" : "https://images.samsung.com/pk/smartphones/galaxy-s22-ultra/buy/S22_Ultra_ProductKV_Black_MO.jpg" 
+    } , 
+    {
+        "item" : "Iphone 14 Pro Max"  , 
+        "itemPrice" : 20000000 ,
+        "stock" : 10,  
+        "imgUrl" : "https://images.samsung.com/pk/smartphones/galaxy-s22-ultra/buy/S22_Ultra_ProductKV_Black_MO.jpg" 
+    }
+]
