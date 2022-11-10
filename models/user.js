@@ -1,4 +1,5 @@
 'use strict';
+const bcryptjs = require('bcryptjs')
 const {
   Model
 } = require('sequelize');
@@ -30,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     }},
     password: {
       type: DataTypes.STRING,
+      allowNull:false,
     validate: {
       notNull: {
         msg: `Password can not be null`
@@ -42,6 +44,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
+  });
+
+  User.beforeCreate((user, options) => {
+    const salt = bcryptjs.genSalt(10) 
+    const hash = bcryptjs.hashSync(user.password , salt) 
+
+    user.password = hash
   });
   return User;
 };

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/boot.ejs') %> 
+    <title>Edit Item</title>
+</head>
+<body class="container">
+
+    <h3>Edit Item</h3>
+    
+    <form action="/items/<%= Item.id %>/edit" method="post">
+        <label for="name">Item Name:</label>
+        <input type="text" value="<%=Item.item%>" name="item"><br><br>
+        <label for="item">Item Price:</label>
+        <input type="number" value="<%=Item.itemPrice%>" name="itemPrice"><br><br>
+        <label for="item">Image URL:</label>
+        <input type="text" value="<%=Item.imgUrl%>" name="imgUrl"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+    
+</body>
+</html>

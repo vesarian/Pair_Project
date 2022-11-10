@@ -1,6 +1,7 @@
 'use strict';
 const {
-  Model
+  Model ,
+  Op
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Credit extends Model {
@@ -11,58 +12,35 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Credit.belongsTo(models.User)
+      Credit.belongsTo(models.Item)
+      Credit.belongsTo(models.Profile)
+    }
+
+    get toMonth(){
+      return this.tenor +  `month`
     }
   }
+  
   Credit.init({
-    item: {
-      type: DataTypes.STRING,
-      validate: {
-        notNull: {
-          msg: `Item must be filled`
-        },
-        notEmpty: {
-          msg: `Item must not be empty`
-        }
-      }
-    },
-    itemPrice: {
-      type: DataTypes.INTEGER,
-      validate: {
-        notNull: {
-          msg: `Item Price must not be null`
-        },
-        notEmpty: {
-          msg: `Item Price must not be empty`
-        }
-      }
-    },
-    duration: {
-      type: DataTypes.INTEGER,
-      validate: {
-        notNull: {
-          msg: `Duration must not be null`
-        },
-        notEmpty: {
-          msg: `Duration must not be empty`
-        }
-      }
-    },
-    UserId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Users',
-        key: 'id'
-      },
-      onUpdate: 'cascade',
-      onDelete: 'cascade'
-    },
-    imgUrl: {
-      type: DataTypes.STRING
-    }
-  }, {
+    tenor: DataTypes.INTEGER,
+    ProfileId: DataTypes.INTEGER,
+    ItemId: DataTypes.INTEGER,
+    amount: DataTypes.INTEGER
+  }, 
+   {
     sequelize,
     modelName: 'Credit',
+    hooks:{
+      beforeCreate:(value) => {
+        if(value.tenor === 3){
+          value.amount = value.amount + (value.amount*0.05)
+        }else if(value.tenor === 6){
+          value.amount = value.amount + (value.amount*0.1)
+        }else if(value.tenor === 12){
+          value.amount = value.amount + (value.amount*0.15)
+        }
+      }
+    }
   });
   return Credit;
 };
