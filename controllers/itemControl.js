@@ -16,6 +16,7 @@ class ItemControl {
     static readAll(req, res) {
         Item.sortPrice()
             .then((Item) => {
+                //res.send(Item)
                 res.render('index', { Item  , rupiah })
             }).catch((err) => {
                 res.send(err)
@@ -77,6 +78,21 @@ class ItemControl {
         }).catch((err) => {
             res.send(err)
         });
+    }
+
+    static itemDetail(res, req) {
+        const id = req.params.id 
+
+
+        console.log(id)
+
+        // Item.findOne(
+        //     {where: {id:id}}
+        // ).then((Item) => {
+        //     res.render('detailItem' , {Item})
+        // }).catch((err) => {
+        //     res.send(err)
+        // });
     }
 }
 module.exports = ItemControl

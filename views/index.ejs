@@ -25,7 +25,7 @@
         <tbody>
             <% Item.forEach((el, i) => { %>
           <tr>
-            <th scope="row"><%= el.id %> </th>
+            <th scope="row"><%= i+1 %> </th>
                 <td><%= el.item %> </td>
                 <td><%= rupiah(el.itemPrice) %></td>
                 <td><img src="<%= el.imgUrl %>" width="200"></td>
